@@ -1,0 +1,109 @@
+<!-- Banner Section Start -->
+
+<section class="banner_section"  style="background-image:url({{ section.settings.bg | img_url: '2144x958' }})"   >
+
+
+  <div class="container-fluid">
+            <div class="row align-items-center" >
+              <div class="col-sm-6 col-md-6">
+                <div class="banner-text">
+
+                  {% if section.settings.title != blank  %}
+                   <h2>{{ section.settings.title }}</h2>
+                  {% endif %}
+                  {% if section.settings.subtitle != blank  %}
+                   <h3>{{ section.settings.subtitle }}</h3>
+                  {% endif %} 
+                    
+
+                  {%  if section.settings.btn != blank  %}
+                    <a class="custom_btn2 btn"  href="{{ section.settings.btn }}">{{ section.settings.btntext }}</a>
+                     {%  endif %}
+
+                  
+               </div>
+              </div>
+
+            
+              <div class="col-sm-6 col-md-6">
+
+            <div class="banner_section_boll relative"> 
+
+              {% if section.settings.peoples != blank %} 
+              <img src="{{ section.settings.peoples | img_url: '1000x700'  }}" alt="{{ section.settings.peoples.alt | escape }}"  class="img-fluid banner" > 
+            {% endif  %}
+
+              
+              {% if section.settings.logo != blank %} 
+              <img src="{{ section.settings.logo | img_url: '280x265'  }}" alt="{{ section.settings.logo.alt | escape }}"  class="img-fluid bannerlogo" > 
+            {% endif  %}
+              
+<!--                   <img src="images/Loading.png" class="img-fluid banner" alt="banner logo" > 
+                  <img src="images/bannerlogo.png" class="img-fluid bannerlogo" alt="banner boll" > -->
+              
+            </div>
+            </div>
+              
+
+            </div>
+</section>
+
+<!-- Banner Section end -->
+
+    
+{% schema %}
+  {
+    "name": "Secondary Hero Banner",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"bg",
+        "label":"Banner Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"peoples",
+        "label":"Peoples Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"logo",
+        "label":"Logo"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Title",
+        "default":"STAY CONNECTED"
+      },
+      {
+        "type":"textarea",
+        "id":"subtitle",
+        "label":"Sub Title",
+        "default":"THAT DOESN'T SUCK!"
+      },
+      {
+        "type":"text",
+        "id":"btntext",
+        "label":"Button Text",
+        "default":"SHOP NOW"
+      },
+      {
+        "type":"url",
+        "id":"btn",
+        "label":"Button Link"
+      }
+    ],
+      "presets": [
+        {
+          "name": "Secondary Hero Banner"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

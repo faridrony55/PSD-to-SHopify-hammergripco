@@ -1,0 +1,205 @@
+ <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+<!--product section Start-->
+
+<section class="product_section ">
+  <div class="container ">
+   <div class="row ">
+
+       <div class="col-md-5">
+           <div class="product_imaes">  
+             {% if section.settings.video != blank %}
+              <a data-fancybox="video-gallery" href="{{ section.settings.video }}" class="but btn1">
+               {% endif %}
+               
+               {% if section.settings.image != blank %}
+              <img src="{{ section.settings.image | img_url: '762x1018'  }}" alt="{{ section.settings.image.alt | escape }}" class="w-100"> 
+            {% endif  %}
+            
+             {% if section.settings.video != blank %}
+              </a>
+               {% endif %}
+               
+             
+              
+           </div>
+
+
+
+         
+      
+         
+       </div>
+       <div class="col-md-7">
+           <div class="product_content">
+
+             {% if section.settings.title != blank  %}
+                   <h2>{{ section.settings.title }}</h2>
+                  {% endif %}
+                  {% if section.settings.subtitle != blank  %}
+                    {{ section.settings.subtitle }} 
+                  {% endif %} 
+
+             
+                 <div class="row">
+
+                     {% for block in section.blocks %}
+
+                           <div class="col-sm-6">
+                            <div class="product"> 
+                              {% if block.settings.icon != blank %}
+                                <div class="product_icon">
+                                  <img src="{{ block.settings.icon | img_url: '400x400'  }}" alt="{{ block.settings.icon.alt | escape }}">
+                                 </div> 
+                                {% endif  %}
+                              
+                             <div class="product_name"> 
+                               {% if block.settings.title != blank  %}
+                                 <h5>{{ block.settings.title }}</h5>
+                                {% endif %}
+                                {% if block.settings.subtitle != blank  %}
+                                 <p>{{ block.settings.subtitle }}</p>
+                                {% endif %}  
+                               
+                                {% if block.settings.star %}
+                                 <div class="mt-2">
+                                  <img src="{{ 'star.png' | asset_url }}" alt="star">
+                                </div>
+                               {% endif %}
+                       
+                              </div>
+                            </div>
+                        </div>
+
+                       
+                       {% endfor %}
+                  
+                 
+            
+          
+           {%  if section.settings.btn != blank  %}
+             <div class="col-6 col-lg-4 col-md-6"> 
+              <a  class="custom_btn btn" href="{{ section.settings.btn }}">{{ section.settings.btntext }}</a>
+             </div>
+             {%  endif %} 
+           {%  if section.settings.btn1 != blank  %}
+             <div class="col-6 col-lg-5 col-md-6"> 
+              <a  class="custom_btn btn" href="{{ section.settings.btn1 }}">{{ section.settings.btntext1 }}</a>
+             </div>
+             {%  endif %} 
+
+                   
+           
+           
+
+
+       </div>
+   </div>
+   
+
+ 
+</section>
+<!--product section End-->
+{% schema %}
+  {
+    "name": "Two Column Video Box",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Banner Image"
+      },
+      {
+        "type":"text",
+        "id":"video",
+        "label":"Video Link"
+      },
+      {
+        "type":"image_picker",
+        "id":"logo",
+        "label":"Banner Logo"
+      },
+      {
+        "type":"textarea",
+        "id":"title",
+        "label":"Title",
+        "default":"Loading<span> Hammer Pro x</span>"
+      },
+      {
+        "type":"richtext",
+        "id":"subtitle",
+        "label":"Sub Title",
+        "default":"<p>The “ Hammer Pro X ” Is Designed And Created By Specialist Tyrell Hamer-Jackson, Introducing The First 165G PRO STOCK Carbon Fibre Lightweight Handle Improved For The Most Elite Offence And Or Faceoff Athlete With Our Custom Soft Grip You Can Elevate Your Feel For The Ball And The Game.</p>"
+      },
+      {
+        "type":"text",
+        "id":"btntext",
+        "label":"Button Text",
+        "default":"SHOP NOW"
+      },
+      {
+        "type":"url",
+        "id":"btn",
+        "label":"Button Link"
+      },
+      {
+        "type":"text",
+        "id":"btntext1",
+        "label":"Button Text",
+        "default":"SHOP NOW"
+      },
+      {
+        "type":"url",
+        "id":"btn1",
+        "label":"Button Link"
+      } 
+    ],
+    "blocks":[
+      {
+        "type":"text",
+        "name":"Features",
+        "settings":[
+            {
+              "type":"image_picker",
+              "id":"icon",
+              "label":"Icon"
+            }, 
+            {
+              "type":"text",
+              "id":"title",
+              "label":"Title",
+              "default":"LIGHT WEIGHT"
+            },
+            {
+              "type":"text",
+              "id":"subtitle",
+              "label":"Sub Title",
+              "default":"FASTER"
+            },
+            {
+              "type":"checkbox",
+              "id":"star",
+              "label":"Star Rating",
+              "default":false
+            }
+          
+        ]
+      }
+    ],
+      "presets": [
+        {
+          "name": "Two Column Video Box"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>

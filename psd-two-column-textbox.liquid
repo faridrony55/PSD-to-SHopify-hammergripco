@@ -1,0 +1,191 @@
+<!--product section Start-->
+
+  <section class="product_section">
+       <div class="container">
+        <div class="row">
+
+            <div class="col-md-5">
+                <div class="product_imaes">
+
+                  {% if section.settings.image != blank %}
+                    <img src="{{ section.settings.image | img_url: '762x1018'  }}" alt="{{ section.settings.image.alt | escape }}" class="w-100 productimage"> 
+                    {% endif  %}
+                  {% if section.settings.logo != blank %}
+                    <img src="{{ section.settings.logo | img_url: '165x110'  }}" alt="{{ section.settings.logo.alt | escape }}" class="img-fluid product_logo"> 
+                    {% endif  %}
+                     
+                      
+                   </div> 
+                 
+
+            </div>
+            <div class="col-md-7">
+                <div class="product_content">
+                  {% if section.settings.title != blank  %}
+                   <h2>{{ section.settings.title }}</h2>
+                  {% endif %}
+                  {% if section.settings.subtitle != blank  %}
+                   <p>{{ section.settings.subtitle }}</p>
+                  {% endif %} 
+                    
+                     <div class="row">
+
+                       {% for block in section.blocks %}
+
+                           <div class="col-sm-6">
+                            <div class="product">
+
+                              {% if block.settings.icon != blank %}
+                                <div class="product_icon">
+                                  <img src="{{ block.settings.icon | img_url: '400x400'  }}" alt="{{ block.settings.icon.alt | escape }}">
+                                 </div> 
+                                {% endif  %}
+                              
+                             <div class="product_name">
+
+                               {% if block.settings.title != blank  %}
+                                 <h5>{{ block.settings.title }}</h5>
+                                {% endif %}
+                                {% if block.settings.subtitle != blank  %}
+                                 <p>{{ block.settings.subtitle }}</p>
+                                {% endif %} 
+                               
+                                {% if block.settings.star %}
+                                 <div class="mt-2">
+                                  <img src="{{ 'star.png' | asset_url }}" alt="star">
+                                </div>
+                               {% endif %}
+                    
+                                  
+                              </div>
+                            </div>
+                        </div>
+
+                       
+                       {% endfor %}
+
+                        {%  if section.settings.btn != blank  %}
+             <div class="col-6 col-lg-4 col-md-6"> 
+              <a  class="custom_btn btn" href="{{ section.settings.btn }}">{{ section.settings.btntext }}</a>
+             </div>
+             {%  endif %} 
+           {%  if section.settings.btn1 != blank  %}
+             <div class="col-6 col-lg-5 col-md-6"> 
+              <a  class="custom_btn btn" href="{{ section.settings.btn1 }}">{{ section.settings.btntext1 }}</a>
+             </div>
+             {%  endif %} 
+ 
+                 
+               
+
+            </div>
+        </div>
+        
+{% if section.settings.bg != blank %}
+        <div class="boll">
+          <img src="{{ section.settings.bg | img_url: '250'  }}" alt="boll" width="100">
+        </div>
+  {%  endif %}
+   </section>
+<!--product section End-->
+
+
+{% schema %}
+  {
+    "name": "Two Column Text Box",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Banner Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"logo",
+        "label":"Banner Logo"
+      },
+      {
+        "type":"textarea",
+        "id":"title",
+        "label":"Title",
+        "default":"SS Two Tone <span>10 D Mesh</span>"
+      },
+      {
+        "type":"textarea",
+        "id":"subtitle",
+        "label":"Sub Title",
+        "default":"The Semi soft Two Tone 10 Diamon Mesh is trusted and used by the pros.  This mesh is rain tested and heat test, pro stock mesh.  When developing this mesh our goal was to help you feel the ball better without scarificing durability and accuracy."
+      },
+      {
+        "type":"text",
+        "id":"btntext",
+        "label":"Button Text",
+        "default":"SHOP NOW"
+      },
+      {
+        "type":"url",
+        "id":"btn",
+        "label":"Button Link"
+      },
+      {
+        "type":"text",
+        "id":"btntext1",
+        "label":"Button Text",
+        "default":"SHOP NOW"
+      },
+      {
+        "type":"url",
+        "id":"btn1",
+        "label":"Button Link"
+      } ,
+      {
+        "type":"image_picker",
+        "id":"bg",
+        "label":"Background Image"
+      }
+    ],
+    "blocks":[
+      {
+        "type":"text",
+        "name":"Features",
+        "settings":[
+            {
+              "type":"image_picker",
+              "id":"icon",
+              "label":"Icon"
+            }, 
+            {
+              "type":"text",
+              "id":"title",
+              "label":"Title",
+              "default":"LIGHT WEIGHT"
+            },
+            {
+              "type":"text",
+              "id":"subtitle",
+              "label":"Sub Title",
+              "default":"FASTER"
+            },
+            {
+              "type":"checkbox",
+              "id":"star",
+              "label":"Star Rating",
+              "default":false
+            }
+          
+        ]
+      }
+    ],
+      "presets": [
+        {
+          "name": "Two Column Text Box"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

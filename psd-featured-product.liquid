@@ -1,0 +1,117 @@
+<!--Featured Product section sart-->
+
+<section class="featured_product"  style="background-image:url({{ section.settings.bg | img_url: '2144x958' }})" > 
+  <div class="container">
+    {% if section.settings.title != blank  %}
+        <h2>{{ section.settings.title }}</h2> 
+       {% endif %}
+    
+  </div> 
+</section>
+
+
+<!--Featured Product section End-->
+<!--Product section start-->
+
+<div class="container">
+  <div class="products">
+    <div class="row  justify-content-evenly">
+      <div class="col-md-12 col-lg-10 col-xl-8">
+         
+    <div class="row justify-content-center">
+
+      {% for block in section.blocks %} 
+      {%- assign product =  block.settings.product  -%} 
+      <div class="col-sm-4 px-md-4 col-8"> 
+        <div href="" class="product_all">
+          <div class="productImg">
+           <img class="w-100" src="{{ product.featured_image | img_url: '2000x'}}" />
+          </div>
+          <h4>{{ product.title | excape }}</h4>
+
+          
+          <!--     <a class="products_btn"  href=""> buy now</a> -->
+
+
+<form method="post" action="/cart/add">
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+<!--   <input min="1" type="number" id="quantity" name="quantity" value="1"/> -->
+  <input type="submit" value="BUY NOW" class="btn products_btn" />
+</form>
+           
+
+
+          
+        </div>
+      </div>
+      {% endfor %}
+ 
+
+      
+    </div>
+
+      </div>
+    </div>
+  {% if section.settings.view %}
+    <div class="All_Products">
+      <a class="custom_btn btn" href="./all">View All Products</a>
+    </div>
+    {% endif %}
+    
+  </div>
+</div>
+
+
+<!--Product section end-->
+
+
+
+{% schema %}
+  {
+    "name": "Featured Products",
+    "max_blocks": 3,
+    "settings": [
+      
+      {
+        "type":"textarea",
+        "id":"title",
+        "label":"Title",
+        "default":"FEATURED PRODUCT"
+      }, 
+      {
+        "type":"image_picker",
+        "id":"bg",
+        "label":"Background Image"
+      },
+      {
+        "type":"checkbox",
+        "id":"view",
+        "label":"View All products"
+      }
+    ],
+    "blocks":[
+      {
+        "type":"product",
+        "name":"Featured Product",
+        "settings":[ 
+            {
+              "type":"product",
+              "id":"product",
+              "label":"Featured Product" 
+            }
+        ]
+      }
+    ],
+      "presets": [
+        {
+          "name": "Featured Products"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

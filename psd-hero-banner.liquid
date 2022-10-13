@@ -1,0 +1,91 @@
+<style>
+/*   
+.header_banner_section{ 
+    background: url(../images/Banner\ images.jpg);  
+} */
+</style>
+<!-- Header Banner Section Start -->
+
+<section class="header_banner_section" style="background-image:url({{ section.settings.bg | img_url: '2144x958' }})">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-12">
+          {% if section.settings.logo != blank %}
+          <div class="banner_logo">
+              <img src="{{ section.settings.logo | img_url: '165x109'  }}" alt="{{ section.settings.logo.alt | escape }}" class="img-fluid">
+          </div>
+          {% endif  %}
+          <div class="banner-content">
+            {% if section.settings.title != blank  %}
+             <h1>{{ section.settings.title }}</h1>
+            {% endif %}
+            {% if section.settings.subtitle != blank  %}
+             <h3>{{ section.settings.subtitle }}</h3>
+            {% endif %} 
+          </div>
+           <div>
+             {%  if section.settings.btn != blank  %}
+            <a class="custom_btn btn"  href="{{ section.settings.btn }}">{{ section.settings.btntext }}</a>
+             {%  endif %}
+           </div>
+          
+        </div>
+      </div>
+        
+
+    </div>
+</section>
+
+<!-- Header Banner Section End -->
+
+{% schema %}
+  {
+    "name": "Hero Banner",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"bg",
+        "label":"Banner Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"logo",
+        "label":"Banner Logo"
+      },
+      {
+        "type":"text",
+        "id":"title",
+        "label":"Title",
+        "default":"LACROSSE GEAR"
+      },
+      {
+        "type":"textarea",
+        "id":"subtitle",
+        "label":"Sub Title",
+        "default":"THAT DOESN'T SUCK!"
+      },
+      {
+        "type":"text",
+        "id":"btntext",
+        "label":"Button Text",
+        "default":"SHOP NOW"
+      },
+      {
+        "type":"url",
+        "id":"btn",
+        "label":"Button Link"
+      }
+    ],
+      "presets": [
+        {
+          "name": "Hero Banner"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,103 @@
+
+<!--Loading Lax section start-->
+
+<section class="loading_lax ">
+
+  <div class="container ">
+          
+    <div class="lax_text">
+      <h2>
+      {% if section.settings.title != blank  %}
+        {{ section.settings.title }}
+       {% endif %}
+       <br>
+       {% if section.settings.subtitle != blank  %}
+          <span>{{ section.settings.subtitle }}</span>
+        {% endif %}  
+    </h2>
+      
+       
+    </div>
+
+  
+      <div class="row justify-content-center">
+          {% for block in section.blocks %} 
+            {% if block.settings.logo != blank %}
+             <div class="col-6 col-md-3 col-sm-4"> 
+               <img class="lax_logo"  src="{{ block.settings.logo | img_url: '400x400'  }}" alt="{{ block.settings.logo.alt | escape }}">
+              </div>
+            {% endif %}
+          {% endfor %}
+ 
+     
+        </div>
+     
+     </div>
+
+
+  {% if section.settings.bg != blank %}
+        <div class="boll2">
+          <img src="{{ section.settings.bg | img_url: '250'  }}" alt="boll" width="100">
+        </div>
+  {%  endif %}
+
+  
+  
+      
+ 
+
+</section>
+
+
+<!--Loading Lax section End-->
+
+{% schema %}
+  {
+    "name": "Logos Group",
+    "settings": [
+      
+      {
+        "type":"textarea",
+        "id":"title",
+        "label":"Title",
+        "default":"LOADING LAX"
+      },
+      {
+        "type":"textarea",
+        "id":"subtitle",
+        "label":"Sub Title",
+        "default":"COULD BE AVAILABLE NEAR YOU..."
+      },
+      {
+        "type":"image_picker",
+        "id":"bg",
+        "label":"Background Image"
+      }
+    ],
+    "blocks":[
+      {
+        "type":"text",
+        "name":"Logos",
+        "settings":[
+            {
+              "type":"image_picker",
+              "id":"logo",
+              "label":"Logo"
+            } 
+          
+        ]
+      }
+    ],
+      "presets": [
+        {
+          "name": "Logos Group"
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
